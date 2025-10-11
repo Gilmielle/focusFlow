@@ -58,13 +58,14 @@
 :root {
   --radius: 0.625rem;
   --color-white: #FFFFFF;
-  --background: var(--color-white);
+  --color-accent-primary: #9B59B6;
+  --color-accent-primary-light: #c39bd3;
+  --color-accent-secnodary: #059669;
+  --background: var(--color-accent-primary-light);
   --foreground: #2D3436;
   --background-secondary: #F7F9FA;
-  --color-accent-primary: #9B59B6;
-  --color-accent-secnodary: #2ECC71;
 
-  --card: var(--background-secondary);
+  --card: var(--color-white);
   --card-foreground: var(--foreground);
   --popover: var(--background-secondary);
   --popover-foreground: var(--foreground);

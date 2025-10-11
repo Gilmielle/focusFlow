@@ -1,8 +1,5 @@
-"use client";
-
 import Image from "next/image";
-import {Button} from "@/components/ui/button";
-import {Checkbox} from "@/components/ui/checkbox";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -16,27 +13,11 @@ export default function Home() {
           height={38}
           priority
         />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left">
+        <ul className="list-inside list-decimal text-sm/6 text-center sm:text-left">
           <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
+            <Link href="/components">Страница компонентов</Link>
           </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-        <Button>Click me</Button>
-        <label>
-          <Checkbox onCheckedChange={(e) => console.debug(e)} />
-          <span>Checkbox</span>
-        </label>
-        <label>
-          <Checkbox variant={"secondary"} onCheckedChange={(e) => console.debug(e)} />
-          <span>Checkbox</span>
-        </label>
+        </ul>
       </main>
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
         <a
