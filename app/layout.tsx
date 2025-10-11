@@ -1,12 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { inter } from "@/app/fonts";
 import "./globals.css";
+import "./utils.css";
 
-// TODO: import fonts to fonts folder
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["cyrillic", "latin"],
-});
 
 export const metadata: Metadata = {
   title: {

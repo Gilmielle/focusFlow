@@ -33,6 +33,10 @@ export default function Home() {
           <Checkbox onCheckedChange={(e) => console.debug(e)} />
           <span>Checkbox</span>
         </label>
+        <label>
+          <Checkbox variant={"secondary"} onCheckedChange={(e) => console.debug(e)} />
+          <span>Checkbox</span>
+        </label>
       </main>
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
         <a
