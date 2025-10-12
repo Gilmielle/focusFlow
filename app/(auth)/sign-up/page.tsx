@@ -1,14 +1,14 @@
 import {Metadata} from "next";
-import LoginForm from "@/components/login-form";
 import {Suspense} from "react";
+import SignUpForm from "@/components/sign-up-form";
 
 export const metadata: Metadata = {
-  title: "Авторизация",
+  title: "Регистрация",
 };
 
-export default function LoginPage() {
+export default function SignUpPage() {
   // TODO skeleton ?
   return <Suspense>
-    <LoginForm />
+    <SignUpForm />
   </Suspense>
 }

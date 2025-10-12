@@ -61,14 +61,15 @@
   --color-accent-primary: #9B59B6;
   --color-accent-primary-light: #c39bd3;
   --color-accent-secnodary: #059669;
+  --color-text: #2D3436;
   --background: var(--color-accent-primary-light);
-  --foreground: #2D3436;
+  --foreground: var(--color-white);
   --background-secondary: #F7F9FA;
 
   --card: var(--color-white);
-  --card-foreground: var(--foreground);
+  --card-foreground: var(--color-text);
   --popover: var(--background-secondary);
-  --popover-foreground: var(--foreground);
+  --popover-foreground: var(--color-text);
 
   --primary: var(--color-accent-primary);
   --primary-foreground: var(--color-white);
@@ -147,4 +148,5 @@
 body {
   background: var(--background);
   color: var(--foreground);
+  min-width: 360px;
 }
