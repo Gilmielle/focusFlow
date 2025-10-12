@@ -22,8 +22,20 @@ export default function SignUpForm() {
               <Label htmlFor="email">Email</Label>
               <Input
                 id="email"
+                name="email"
                 type="email"
                 placeholder="me@example.com"
+                required
+                autoComplete={"new-password"}
+              />
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="user-name">Имя пользователя</Label>
+              <Input
+                id="user-name"
+                name="user-name"
+                type="text"
+                placeholder="Иванов Иван"
                 required
                 autoComplete={"new-password"}
               />
@@ -34,6 +46,7 @@ export default function SignUpForm() {
               </div>
               <Input
                 id="password"
+                name="password"
                 type="password"
                 required
                 autoComplete={"new-password"}
@@ -45,6 +58,7 @@ export default function SignUpForm() {
               </div>
               <Input
                 id="password-repeat"
+                name="password-repeat"
                 type="password-repeat"
                 required
                 autoComplete={"new-password"}
