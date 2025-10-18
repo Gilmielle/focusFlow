@@ -5,8 +5,17 @@ import {Label} from "@/components/ui/label";
 import {Input} from "@/components/ui/input";
 import {Button} from "@/components/ui/button";
 import Link from "next/link";
+import {useSearchParams} from "next/navigation";
+import {useActionState} from "react";
+import {authenticateWithCredentials} from "@/lib/actions/auth";
+import { CircleAlert } from 'lucide-react';
 
 export default function LoginForm() {
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl") || "/dashboard"; // TODO constant ?
+
+  const [ errorMsg, formAction, isPending ] = useActionState(authenticateWithCredentials, undefined);
+
   return (
     <Card className="w-full max-w-sm">
       <CardHeader>
@@ -16,7 +25,7 @@ export default function LoginForm() {
       </CardHeader>
 
       <CardContent>
-        <form>
+        <form action={formAction} id="login-form">
           <div className="flex flex-col gap-6">
             <div className="grid gap-2">
               <Label htmlFor="email">Email</Label>
@@ -44,16 +53,32 @@ export default function LoginForm() {
                 name="password"
                 type="password"
                 required
+                minLength={6}
               />
             </div>
+            <input type={"hidden"} name={"callbackUrl"} value={callbackUrl} />
           </div>
         </form>
+        {errorMsg && <div
+          className="flex h-8 items-end space-x-1"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          <CircleAlert className="h-5 w-5 text-red-500" />
+          <p className="text-sm text-red-500">{errorMsg}</p>
+        </div>}
       </CardContent>
       <CardFooter className="flex-col gap-2">
-        <Button type="submit" className="w-full">
+        <Button
+          type="submit"
+          className="w-full"
+          disabled={isPending}
+          aria-disabled={isPending}
+          form={"login-form"}
+        >
           Войти
         </Button>
-        <Button variant="secondary" className="w-full">
+        <Button variant="secondary" className="w-full" disabled={isPending} aria-disabled={isPending}>
           Войти с помощью GitHub
         </Button>
         <p className="text-sm mt-4">
