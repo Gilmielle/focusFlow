@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { inter } from "@/app/fonts";
 import "./globals.css";
 import "./utils.css";
+import { Toaster } from "@/components/ui/sonner";
 
 
 export const metadata: Metadata = {
@@ -23,6 +24,7 @@ export default function RootLayout({
         className={`${inter.className} antialiased`}
       >
         {children}
+        <Toaster />
       </body>
     </html>
   );

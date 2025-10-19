@@ -1,5 +1,6 @@
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
+"use client"
 
+import {Calendar, Home, Inbox, LogOut, Search, Settings} from "lucide-react"
 import {
   Sidebar,
   SidebarContent, SidebarFooter,
@@ -10,6 +11,8 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
+import { signOut } from "next-auth/react";
+import {Button} from "@/components/ui/button";
 
 // Menu items.
 const items = [
@@ -63,7 +66,10 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
-        User name
+        <Button variant={"outline"} className={"w-full"} size={"lg"} onClick={async () => await signOut({ callbackUrl: "/" })}>
+          <LogOut className="w-6" />
+          <div className="hidden md:block">Sign Out</div>
+        </Button>
       </SidebarFooter>
     </Sidebar>
   )

@@ -32,8 +32,6 @@ const handler = NextAuth({
             }
           })
 
-          console.log(user)
-
           if (!user) {
             return null;
           }
@@ -41,6 +39,7 @@ const handler = NextAuth({
           const isPasswordsMatch = await bcrypt.compare(password, user.password)
 
           if (isPasswordsMatch) {
+            console.log(user)
             return user;
           }
           console.log("Invalid credentials");

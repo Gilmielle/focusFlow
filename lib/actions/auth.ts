@@ -1,4 +1,4 @@
-import {signIn} from "next-auth/react";
+import { signIn } from "next-auth/react";
 
 const authenticateWithCredentials = async (prevState: string | undefined, formData: FormData) => {
   const callbackUrl = formData.get("callbackUrl") as string ?? "/dashboard";

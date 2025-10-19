@@ -17,6 +17,15 @@ import {
 import {Item, ItemActions, ItemContent, ItemDescription, ItemMedia, ItemTitle} from "@/components/ui/item";
 import {BadgeCheckIcon, ChevronRightIcon} from "lucide-react";
 import {Skeleton} from "@/components/ui/skeleton";
+import {
+  Dialog, DialogClose,
+  DialogContent,
+  DialogDescription, DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger
+} from "@/components/ui/dialog";
+import {toast} from "sonner";
 
 // export const metadata: Metadata = {
 //   title: "Components",
@@ -41,6 +50,9 @@ export default function ComponentsPage() {
         <h2 className={"text-base font-semibold mb-3"}>
           Card, Input, Checkbox, Label, Button
         </h2>
+        <div className="mb-4">
+          <Button onClick={() => toast.success("Пароль успешно изменён.")}>Вывести уведомление</Button>
+        </div>
         <form>
           <div className="flex flex-col gap-6">
             <div className="grid gap-2">
@@ -69,12 +81,30 @@ export default function ComponentsPage() {
             <div className="grid gap-2">
               <div className="flex items-center">
                 <Label htmlFor="password">Password</Label>
-                <a
-                  href="#"
-                  className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                >
-                  Forgot your password?
-                </a>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <button
+                      className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
+                    >
+                      Forgot your password?
+                    </button>
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle>Are you absolutely sure?</DialogTitle>
+                      <DialogDescription>
+                        This action cannot be undone. This will permanently delete your account
+                        and remove your data from our servers.
+                      </DialogDescription>
+                    </DialogHeader>
+                    <DialogFooter>
+                      <DialogClose asChild>
+                        <Button variant="outline">Cancel</Button>
+                      </DialogClose>
+                      <Button type="submit">Save changes</Button>
+                    </DialogFooter>
+                  </DialogContent>
+                </Dialog>
               </div>
               <Input id="password" type="password" required />
             </div>

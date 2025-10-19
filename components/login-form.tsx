@@ -9,6 +9,7 @@ import {useSearchParams} from "next/navigation";
 import {useActionState} from "react";
 import {authenticateWithCredentials} from "@/lib/actions/auth";
 import { CircleAlert } from 'lucide-react';
+import ChangePasswordDialog from "@/components/change-password-dialog";
 
 export default function LoginForm() {
   const searchParams = useSearchParams();
@@ -40,13 +41,7 @@ export default function LoginForm() {
             <div className="grid gap-2">
               <div className="flex items-center">
                 <Label htmlFor="password">Пароль</Label>
-                {/* TODO */}
-                <a
-                  href="#"
-                  className="ml-auto inline-block text-sm transition-colors hover:text-(--primary)"
-                >
-                  Забыли пароль?
-                </a>
+                <ChangePasswordDialog />
               </div>
               <Input
                 id="password"
