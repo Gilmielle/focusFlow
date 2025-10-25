@@ -1,12 +1,13 @@
-import NextAuth from "next-auth"
+import NextAuth, {NextAuthOptions} from "next-auth"
 import prisma from "@/lib/prisma";
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import GitHubProvider from "next-auth/providers/github"
 import Credentials from "next-auth/providers/credentials";
 import { z } from 'zod';
 import bcrypt from 'bcrypt';
+import { routes } from "@/lib/constants";
 
-const handler = NextAuth({
+const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
     GitHubProvider({
@@ -51,12 +52,18 @@ const handler = NextAuth({
     })
   ],
   pages: {
-    signIn: '/login',
+    signIn: routes.login,
   },
   session: {
     strategy: "jwt",
   },
   secret: process.env.AUTH_SECRET!,
-})
+};
 
-export { handler as GET, handler as POST }
+const handler = NextAuth(authOptions)
+
+export {
+  handler as GET,
+  handler as POST,
+  authOptions,
+}

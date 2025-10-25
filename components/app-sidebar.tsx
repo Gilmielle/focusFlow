@@ -1,6 +1,4 @@
-"use client"
-
-import {Calendar, Home, Inbox, LogOut, Search, Settings} from "lucide-react"
+import { Home, Settings } from "lucide-react"
 import {
   Sidebar,
   SidebarContent, SidebarFooter,
@@ -11,8 +9,8 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { signOut } from "next-auth/react";
-import {Button} from "@/components/ui/button";
+import { SignOutBtn } from "@/components/sign-out-btn";
+import { getCurrentUser } from "@/lib/utils";
 
 // Menu items.
 const items = [
@@ -22,33 +20,22 @@ const items = [
     icon: Home,
   },
   {
-    title: "Inbox",
-    url: "#",
-    icon: Inbox,
-  },
-  {
-    title: "Calendar",
-    url: "#",
-    icon: Calendar,
-  },
-  {
-    title: "Search",
-    url: "#",
-    icon: Search,
-  },
-  {
     title: "Settings",
     url: "#",
     icon: Settings,
   },
 ]
 
-export function AppSidebar() {
+export async function AppSidebar() {
+  const user = await getCurrentUser()
+
   return (
     <Sidebar>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupLabel>
+            {!!user ? <>Вы авторизованы как {user.name ?? user.email}</> : <>Вы не авторизованы</>}
+          </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
@@ -66,10 +53,7 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
-        <Button variant={"outline"} className={"w-full"} size={"lg"} onClick={async () => await signOut({ callbackUrl: "/" })}>
-          <LogOut className="w-6" />
-          <div className="hidden md:block">Sign Out</div>
-        </Button>
+        <SignOutBtn />
       </SidebarFooter>
     </Sidebar>
   )
