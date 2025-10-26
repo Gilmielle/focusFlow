@@ -4,23 +4,25 @@ import {
   SidebarContent, SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
+  SidebarGroupLabel, SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { SignOutBtn } from "@/components/sign-out-btn";
+import { SignOutBtn } from "@/components/signOutBtn";
 import { getCurrentUser } from "@/lib/utils";
+import Logo from "@/components/logo";
+import { routes } from "@/lib/constants";
 
 // Menu items.
 const items = [
   {
-    title: "Home",
-    url: "/",
+    title: "Дашборд",
+    url: routes.dashboard,
     icon: Home,
   },
   {
-    title: "Settings",
+    title: "Настройки",
     url: "#",
     icon: Settings,
   },
@@ -31,6 +33,13 @@ export async function AppSidebar() {
 
   return (
     <Sidebar>
+      <SidebarHeader>
+        <Logo
+          src={"/logo-1.png"}
+          width={150}
+          className={"justify-center"}
+        />
+      </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>

@@ -8,7 +8,7 @@ export function SignOutBtn() {
   return (
     <Button variant={"outline"} className={"w-full"} size={"lg"} onClick={async () => await signOut({ callbackUrl: "/" })}>
       <LogOut className="w-6" />
-      <div className="hidden md:block">Sign Out</div>
+      <span>Выход</span>
     </Button>
   )
 }

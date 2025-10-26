@@ -1,11 +1,11 @@
-'use server';
+"use server";
 
 import {z} from "zod";
 import bcrypt from 'bcrypt';
 import prisma from "@/lib/prisma";
 import {Prisma} from "@/lib/generated/prisma";
 
-export type RegisterState = {
+export interface RegisterState {
   errors?: {
     email?: string[];
     password?: string[];
@@ -14,7 +14,7 @@ export type RegisterState = {
   };
   message?: string | null;
   isShouldRegister?: boolean;
-};
+}
 
 const RegisterFormSchema = z
   .object({

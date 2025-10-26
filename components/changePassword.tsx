@@ -18,7 +18,7 @@ import {CircleAlert} from "lucide-react";
 import {toast} from "sonner";
 import {Loader} from "@/components/ui/loader";
 
-export default function ChangePasswordDialog() {
+export default function ChangePassword() {
   const [ isOpen, setIsOpen ] = useState(false);
   const [ email, setEmail ] = useState("");
   const [ password, setPassword ] = useState("");

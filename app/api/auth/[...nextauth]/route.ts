@@ -40,7 +40,6 @@ const authOptions: NextAuthOptions = {
           const isPasswordsMatch = await bcrypt.compare(password, user.password)
 
           if (isPasswordsMatch) {
-            console.log(user)
             return user;
           }
           console.log("Invalid credentials");
@@ -51,6 +50,20 @@ const authOptions: NextAuthOptions = {
       },
     })
   ],
+  callbacks: {
+    session: async ({ session, token }) => {
+      if (session?.user) {
+        session.user.id = token.sub;
+      }
+      return session;
+    },
+    jwt: async ({ user, token }) => {
+      if (user) {
+        token.uid = user.id;
+      }
+      return token;
+    },
+  },
   pages: {
     signIn: routes.login,
   },

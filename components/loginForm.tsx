@@ -9,7 +9,7 @@ import {useSearchParams} from "next/navigation";
 import {useActionState} from "react";
 import {authenticateWithCredentials} from "@/lib/actions/auth";
 import { CircleAlert } from 'lucide-react';
-import ChangePasswordDialog from "@/components/change-password-dialog";
+import ChangePassword from "@/components/changePassword";
 import {routes} from "@/lib/constants";
 import {Loader} from "@/components/ui/loader";
 
@@ -44,7 +44,7 @@ export default function LoginForm() {
               <div className="grid gap-2">
                 <div className="flex items-center">
                   <Label htmlFor="password">Пароль</Label>
-                  <ChangePasswordDialog />
+                  <ChangePassword />
                 </div>
                 <Input
                   id="password"

@@ -1,7 +1,7 @@
 import {Metadata} from "next";
-import LoginForm from "@/components/login-form";
+import LoginForm from "@/components/loginForm";
 import { Suspense } from "react";
-import LoginFormSkeleton from "@/components/login-form.skeleton";
+import LoginFormSkeleton from "@/components/loginForm.skeleton";
 import { routes } from "@/lib/constants";
 import { getCurrentUser } from "@/lib/utils";
 import { redirect } from "next/navigation";
