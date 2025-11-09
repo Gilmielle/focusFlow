@@ -12,6 +12,9 @@ export default function Home() {
           <li className="mb-2 tracking-[-.01em]">
             <Link href="/login">Страница авторизации</Link>
           </li>
+          <li className="mb-2 tracking-[-.01em]">
+            <Link href="/dashboard">Дашборд</Link>
+          </li>
         </ul>
       </main>
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">

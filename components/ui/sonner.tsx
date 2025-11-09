@@ -2,7 +2,7 @@
 
 import { useTheme } from "next-themes"
 import { Toaster as Sonner } from "sonner"
-import {CircleCheckBig} from "lucide-react";
+import { CircleCheckBig, Bug } from "lucide-react";
 
 type ToasterProps = React.ComponentProps<typeof Sonner>
 
@@ -14,7 +14,8 @@ const Toaster = ({ ...props }: ToasterProps) => {
       theme={theme as ToasterProps["theme"]}
       className="toaster group"
       icons={{
-        success: <CircleCheckBig size={20} className={"text-secondary"} />
+        success: <CircleCheckBig size={20} className={"text-secondary"} />,
+        error: <Bug size={20} className={"text-destructive"} />
       }}
       toastOptions={{
         classNames: {

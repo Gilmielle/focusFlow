@@ -4,6 +4,8 @@ import {SidebarTrigger} from "@/components/ui/sidebar";
 import {getCurrentUser} from "@/lib/utils";
 import AddHabit from "@/components/addHabit";
 import prisma from "@/lib/prisma";
+import RemoveHabit from "@/components/removeHabit";
+import EditHabit from "@/components/editHabit";
 
 export const metadata: Metadata = {
   title: "Dashboard",
@@ -35,12 +37,20 @@ export default async function DashboardPage() {
           Твои привычки:
         </h2>
         <div className="mb-4">
-          Табличка с привычками:
-          {!!habits.length && <ul>
-            {habits.map((habit) => {
-              return <li key={habit.id}>{habit.title}</li>
-            })}
-          </ul>}
+          {!!habits.length ? <>
+            <p>Табличка с привычками:</p>
+            <ul>
+              {habits.map((habit) => {
+                return <li key={habit.id} className={"flex items-center gap-4"}>
+                  <span>{habit.title}</span>
+                  <div className={"flex items-center gap-1"} role={"list"}>
+                    <EditHabit habitId={habit.id} />
+                    <RemoveHabit habitId={habit.id} />
+                  </div>
+                </li>
+              })}
+            </ul>
+          </>: <p>Пока здесь пусто :С</p>}
         </div>
         <AddHabit />
       </CardContent>
